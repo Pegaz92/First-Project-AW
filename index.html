@@ -1,232 +1,224 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My First Project</title>
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous">
-    </script>
-    <script defer src="./js/app.js"></script>
+    <title>Pierwszy Projekt AW</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<nav>
-    <div class="container navContainer">
-        <h1 class="logoWord">shopabc.pl</h1>
-        <ul class="menuList">
-            <li><a href="#">Dlaczego my</a></li>
-            <li><a href="#">Korzyści</a></li>
-            <li><a href="#">Ceny</a></li>
-            <li><a href="#">Kontakt</a></li>
-        </ul>
-    </div>
-</nav>
-
-<header>
-    <div class="container">
-        <h2>Sprzedawaj więcej!</h2>
-        <p>Otwarcie sklepu na naszej platformie, dramatycznie zwiększy twoją sprzedaż</p>
-        <a href="#">Otwórz swój sklep</a>
-    </div>
-</header>
-<section class="sectionOne container">
-    <h3>Najpopularniejsza platforma sprzedażowa w kraju</h3>
-    <div class="content">
-        <div>
-            <img alt="Person" src="images/icons/Person.svg"/>
-            <p>100000+</p>
-            <p>wizyt dziennie</p>
-        </div>
-        <div>
-            <img alt="Eye" src="images/icons/Eye.svg"/>
-            <p>2000000+</p>
-            <p>obejrzanych każdego dnia produktów</p>
-        </div>
-        <div>
-            <img alt="Catalog" src="images/icons/Catalog.svg"/>
-            <p>10000+</p>
-            <p>dodawanych <br>wpisów dziennie</p>
-        </div>
-    </div>
-</section>
-<section class="sectionTwo">
-    <div class="container">
-        <article>
-            <div class="left1">
-                <h3>Bądź zawsze pierwszy</h3>
-                <p>Twój sklep będzie umieszczony na głównej stronie naszego katalogu, gdzie setki tysięcy potencjalnych
-                    klientów ją zobaczy!</p>
-            </div>
-            <div class="right1">
-                <img class="macbook" alt="macbook" src="images/Macbook.png"/>
-
-            </div>
-        </article>
-
-        <article>
-            <div class="left2">
-                <img class="iPhone" alt="iPhone" src="images/iPhone.png"/>
-            </div>
-            <div class="right2">
-                <h3>Twój sklep jest tam, gdzie Ty jesteś!</h3>
-                <p>Nieważne czy jesteś na telefonie, tablecie czy komputerze. Wszystkie potrzebne Ci operacje masz w
-                    zasięgu ręki.</p>
-            </div>
-        </article>
-
-        <div id="art3">
-            <div class="left3">
-                <h3>Zwiększ rozpoznawalność swojej marki</h3>
-                <p>Otwierając sklep na shopabc.pl, nie tylko zwiększysz sprzedaż, ale także powiększysz swoje grono
-                    odbiorców i rozpoznawalność marki w internecie.</p>
-            </div>
-            <div class="right3">
-                <img class="trumpet" alt="Trumpet" src="images/Trumpet.png"/>
+    <header>
+        <nav class="container">
+            <span>shopabc.pl</span>
+            <ul>
+                <li><a href='#section-one'>Dlaczego my</a></li>
+                <li><a href="#section-two">Korzyści</a></li>
+                <li><a href="#prices">Ceny</a></li>
+                <li><a href='#contact'>Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h2>Sprzedawaj więcej!</h2>
+            <p>Otwarcie sklepu na naszej stronie, dramatycznie zwiekszy twoją sprzedaż</p>
+            <div class="button_background">
+                <a href="#">Otwórz swój sklep</a>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="sectionThree">
-    <div class="container">
-        <h3>Cennik</h3>
-        <div class="priceList">
-            <div class="priceListLeft">
-                <h4>Podstawowy</h4>
-                <span class="cash One">$0</span>
-                <span class="orderOptions checkmark">100 MB Przestrzeni dyskowej</span>
-                <span class="orderOptions checkmark">1 Subdomena</span>
-                <span class="orderOptions checkmark">1 konto E-Mail</span>
-                <span class="orderOptions close">2 Lata licencji</span>
-                <span class="orderOptions close">Pełne wsparcie</span>
-                <a href="#" class="order button left">Rozpocznij</a>
-
-            </div>
-            <div class="priceListMiddle">
-                <h4>Profesjonalny</h4>
-                <span class="cash Two">$25</span>
-                <p class="o1">Oferta ograniczona</p>
-                <span class="orderOptions checkmark">500 MB Przestrzeni dyskowej</span>
-                <span class="orderOptions checkmark">2 Subdomeny</span>
-                <span class="orderOptions checkmark">5 kont E-Mail</span>
-                <span class="orderOptions checkmark">Rok licencji</span>
-                <span class="orderOptions close">Pełne wsparcie</span>
-                <a href="#" class="order button middle">Rozpocznij</a>
-            </div>
-            <div class="priceListRight">
-                <h4>Premium</h4>
-                <span class="cash Three">$60</span>
-                <p class="o2">Oferta ograniczona</p>
-                <span class="orderOptions checkmark">2 GB Przestrzeni dyskowej</span>
-                <span class="orderOptions checkmark">4 Subdomeny</span>
-                <span class="orderOptions checkmark">20 kont E-Mail</span>
-                <span class="orderOptions checkmark">2 Lata licencji</span>
-                <span class="orderOptions checkmark">Pełne wsparcie</span>
-                <a href="#" class="order button right">Rozpocznij</a>
+    </header>
+    <section id='section-one' class="section-one">
+        <div class="section-one__container">
+            <h2>Najpopularniejsza platforma sprzedażowa w kraju</h2>
+            <div class="section-one__info">
+                <div class="section-one__info-element">
+                    <div class="circle"></div>
+                    <span>100000+</span>
+                    <span>wizyt dziennie</span>
+                </div>
+                <div class="section-one__info-element">
+                    <div class="circle"></div>
+                    <span>2000000+</span>
+                    <span>obajrzanych każdego dnia produktów</span>
+                </div>
+                <div class="section-one__info-element">
+                    <div class="circle"></div>
+                    <span>10000+</span>
+                    <span>dodawanych wpisów dziennie</span>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<section class="calculatorMain ">
-    <div class="calculator container">
-        <h3>Oblicz ile zapłacisz</h3>
-        <div class="calculatorElements">
-            <div class="calculatorElementsLeft">
-                <form class="calculatorForm">
-                    <label><input name="productsQuantity" id="productsQuantity" placeholder="Ilość produktów" type="number"></label>
-                    <label><input name="orderQuantity" id="orderQuantity" placeholder="Szacowana ilość zamówień w miesiącu"
-                           type="number"></label>
-                    <label><input name="selectPackage" id="selectPackage" placeholder="Wybierz pakiet" type="text" readonly></label>
-                    <div class="selectPackageSelectorMain">
-                        <label> <input name="selectPackageSelectorDown" class="selectPackageSelectorDown" id="selectPackageSelectorDown" placeholder="" type="button"></label>
-                            <label><input name="selectPackageSelectorUp" class="selectPackageSelectorUp none" id="selectPackageSelectorUp" placeholder="" type="button"></label>
-                    </div>
-                    <ul class="calculatorFormSelect none">
-                        <li class="basic">Podstawowy</li>
-                        <li class="pro">Profesjonalny</li>
-                        <li class="premium">Premium</li>
+    </section>
+    <section id='section-two' class="section-two">
+        <div class="section-two__container">
+            <div class="section-two__offer">
+                <div class="section-two__offer-element first-element">
+                    <h2>Bądź zawsze pierwszy</h2>
+                    <p>Twoj sklep bedzie umieszczony na głównej stronie naszego katalogu, gdzie setki tysięcy potencjalnych klientów ją zobaczy!</p>
+                </div>
+                <div class="background-element">
+                    <div class="background-element__shape"></div>
+                </div>
+            </div>
+            <div class="section-two__offer">
+                <div class="section-two__offer-element second-element">
+                    <h2>Twój sklep jest tam, gdzie Ty jesteś!</h2>
+                    <p>Nieważne czy jesteś na telefonie, tablecie czy komputerze. Wszystkie potrzebne Ci operacje masz w zasięgu ręki.</p>
+                </div>
+                <div class="background-element"></div>
+            </div>
+            <div class="section-two__offer-split">
+                <div class="section-two__offer-element third-element">
+                    <h2>Zwiększ rozpoznawalność swojej marki</h2>
+                    <p>Otwierając sklep na shopabc.pl, nie tylko zwiększysz sprzedaż, ale także powiększysz swoje grono odbiorców i rozpoznawalność marki w internecie.</p>
+                </div>
+                <div class="background-element"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id='prices' class="prices"> 
+
+        <h2>Cennik</h2>
+
+        <div class="price-container">   
+            <div class="basic-price">
+                <h3>Podstawowy</h3>
+                <span>$0</span>
+                <ul class="price-list">
+                    <li>100 MB przestrzeni dyskowej</li>
+                    <li>1 Subdomena</li>
+                    <li>1 konto E-Mail</li>
+                    <li>2 lata licencji</li>
+                    <li>Pełne wsparcie</li>
+                </ul>
+                <a href="#">Rozpocznij</a>
+            </div>
+
+            <div class='professional-price'>
+                <h3>Profesjonalny</h3>
+                <span>$25</span>
+                <span>Oferta ograniczona</span>
+                <ul class="price-list">
+                    <li>500 MB Przestrzeni dyskowej</li>
+                    <li>2 Subdoment</li>
+                    <li>5 Kont E-Mail</li>
+                    <li>Rok licencji</li>
+                    <li>Pełne wsparce</li>
+                </ul>
+                <a href='#'>Rozpocznij</a>
+            </div>
+            
+            <div class="premium-price">
+                <h3>Premium</h3>
+                <span>$60</span>
+                <span>Oferta ograniczona</span>
+                <ul class="price-list">
+                    <li>2 GB przestrzeni dysokwej</li>
+                    <li>4 Subdomeny</li>
+                    <li>20 kont E-Mail</li>
+                    <li>2 lata licencji</li>
+                    <li>Pełne wsparcie</li>
+                </ul>
+                <a href='#'>Rozpocznij</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator">
+        <h2>Oblicz ile zapłacisz</h2>
+        <div class="calculator-container">    
+            <form class="calculator-form">
+                <label>
+                    <input id='products_number' type="text" name="products_number" placeholder="Ilość produktów" maxlength="30" size="400">
+                </label>
+                <label>
+                    <input id='monthly_orders' type="text" name="monthly_orders" placeholder="Szacowana ilość zamówień w miesiącu" size="30">
+                </label>
+                <ul class="calculator-form__shown">
+                    <li id='choose_btn'>Wybierz pakiet</li>
+                    <ul class="calculator-form__hidden hidden">
+                        <li>Podstawowy</li>
+                        <li>Profesjonalny</li>
+                        <li>Premium</li>
                     </ul>
-                    <label class="CheckboxLabel"><input type="checkbox" class="accountingService Checkbox" checked>Obsługa księgowa<span
-                            class="customCheckbox"></span>
-                    </label>
-                    <label class="CheckboxLabel"><input type="checkbox" class="terminal Checkbox" checked>Wynajem terminala
-                        płatniczego<span class="customCheckbox"></span>
-                    </label>
-                </form>
-            </div>
-            <div class="calculatorElementsRight">
-                <div class="priceBar">
+                </ul>
+                <label class="check">
+                    <input type="checkbox" name='account_service' value='accountant'>Obsługa księgowa
+                    <span class=checkmark></span>
+                </label>
+                <label class="check">
+                    <input type="checkbox" name="payment_terminal" value='terminal'>Wynajem terminala płatniczego
+                    <span class='checkmark'></span>
+                </label>
+            </form>
+
+            
+            <div class="calculator-result">
+                <div class="calculator-result_element hidden">
                     <span>Produkty</span>
-                    <span class="productsPrice"></span>
-                    <span class="productsSum"></span>
+                    <span class="products-calculation"></span>
+                    <span class="products-result"></span>
                 </div>
-                <div class="priceBar">
+                <div class="calculator-result_element hidden">
                     <span>Zamówienia</span>
-                    <span class="ordersPrice"></span>
-                    <span class="ordersSum"></span>
+                    <span class="orders-calculation"></span>
+                    <span class="orders-result"></span>
                 </div>
-                <div class="priceBar">
+                <div class="calculator-result_element hidden">
                     <span>Pakiet</span>
-                    <span class="package"></span>
-                    <span class="packagePrice"></span>
+                    <span class="packages-type"></span>
+                    <span class="packages-result"></span>
                 </div>
-                <div class="priceBar">
-                    <span class="accountingInfo">Ksiegowość</span>
-                    <span class="accountingPrice">$35</span>
+                <div class='calculator-result_element hidden'>
+                    <span>Księgowość</span>
+                    <span class="accountancy-result">$35</span>
                 </div>
-                <div class="priceBar">
-                    <span class="terminalInfo">Terminal</span>
-                    <span class="terminalPrice">$5</span>
+                <div class="calculator-result_element hidden">
+                    <span>Terminal</span>
+                    <sapn class="terminal-result">$5</sapn>
                 </div>
-                <div class="sumPriceBar">
-                    <span class="sumInfo">Suma</span>
-                    <span class="priceSum">$0</span>
+                <div class="summary">
+                    <span>Suma</span>
+                    <span id="summary-total">$0</span>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-</section>
-<section>
-    <div class="container container_lastSection">
-        <div class="lastSection_left">
-            <h2>Masz pytania?</h2>
-            <span class="lastSectionDescription">Zostaw dla nas swój adres mailowy, lub zadzwoń!</span>
-            <div class="left_information">
-                <span class="mailInfo"><img alt="Eye" src="images/icons/Mail%20Icon.svg"/> info@shopabc.pl</span>
-                <span class="phoneInfo"><img alt="Eye" src="images/icons/Phone%20Icon.svg"/> 123 456 789</span>
+    <section id='contact' class="form-section">
+        <div class="form-container">
+            <div class="form-info">
+                <h2>Masz pytania?</h2>
+                <h3>Zostaw dla nas swój adres mailowy, lub zadzwoń!</h3>
+                <span>info@shopabc.pl</span>
+                <span>123 456 789</span>
             </div>
+            <div>
+                <form>
+                    <label class="data"> Imię i nazwisko<br>
+                        <input type="text" name="name">
+                    </label><br>
+                    <label class='data'>Email<br>
+                        <input type="email" name='email'>
+                    </label><br>
+                    <label class='check'>
+                        <input type="checkbox" name='terms' value='terms' checked='checked'> Wyrażam zgodę na przetwarzanie danych i kontakt.
+                        <span class="checkmark"></span>
+                    </label><br>
+                    <button type="submit" name='submit'>Wyślij</button>
+                </form>
+            </div>    
         </div>
-        <div class="lastSection_right">
-            <label class="nameLabel">Imię i nazwisko
-            <input type="text" value="" placeholder=""></label>
+    </section>
 
-            <label class="mailLabel">E-mail
-            <input type="text" value="" placeholder=""></label>
-
-            <label class="CheckboxLabel"><input type="checkbox" class="Checkbox" checked>Wyrażam
-                zgodę na przetwarzanie danych i kontakt.<span class="customCheckbox"></span>
-            </label>
-            <a href="#" class="sendButton">Wyślij</a>
+    <footer>
+        <div class="footer__logo">
+            <span>shopabc.pl</span>
+            <span>© 2019 Wszystkie prawa zastrzeżone</span>
         </div>
-    </div>
-</section>
-<footer>
-    <div class="container container_Footer">
-        <div class="footerLogo">
-            <span class="footerLogoWord">shopabc.pl</span>
-            <span class="footerDescription">© 2019 Wszystkie prawa zastrzeżone</span>
+        <div class="footer__media">
+            <a class='twitter' href='https://twitter.com/potus' target="_blank"></a>
+            <a class='facebook' href='https://www.facebook.com/BezpiecznaZabawa/' target="_blank"></a>
         </div>
-        <div class="footerIcons">
-            <a class="twitter" href="https://twitter.com/"><img alt="Twitter link" src="./images/icons/Twitter.svg"/></a>
-            <a class="facebook" href="https://www.facebook.com/"><img alt="Facebook link" src="./images/icons/Facebook.svg"/></a>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
+<script src="js/app.js"></script>
 </html>

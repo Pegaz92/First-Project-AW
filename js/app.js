@@ -1,314 +1,120 @@
-$(() => {
 
-///////////////////// Calculator
-////////
-//     Variables from html elements
-    // inputs
-    let productsQuantity = $('#productsQuantity');
-    let orderQuantity = $('#orderQuantity');
+let inputProducts = document.getElementById('products_number');
+let inputOrders = document.getElementById('monthly_orders');
+let priceProducts = document.querySelector(".calculator-result").firstElementChild;
+let priceOrders= document.querySelector(".calculator-result").children[1];
 
-    //package selector
-    let selectPackage = $('#selectPackage');
-
-    let selectPackageSelectorDown = $('.selectPackageSelectorDown');
-    let selectPackageSelectorUp = $('.selectPackageSelectorUp');
-
-    let calculatorFormSelect = $('.calculatorFormSelect');
-    let basic = calculatorFormSelect.find('.basic');
-    let pro = calculatorFormSelect.find('.pro');
-    let premium = calculatorFormSelect.find('.premium');
-
-    //checkboxes
-
-    let accountingService = $('.accountingService');
-    let terminal = $('.terminal');
-
-////////
-//     Calculator prices, etc.
-
-    let productsPriceTxt = $('.productsPrice');
-    let productsSumTxt = $('.productsSum');
-
-    let ordersPriceTxt = $('.ordersPrice');
-    let ordersSumTxt = $('.ordersSum');
-
-    let packageTxt = $('.package');
-    let packagePriceTxt = $('.packagePrice');
-
-    let accountingPriceTxt = $('.accountingPrice');
-    let terminalPriceTxt = $('.terminalPrice');
-
-    let priceSumTxt = $('.priceSum');
-
-////////
-/////////////////////
-
-// main prices
-    const productPrice = 0.5;
-    const orderPrice = 0.25;
-    const packagePrice = 20;
-    const accountServicePrice = 35;
-    const terminalPrice = 5;
-
-// given variables
+let productsSummary = 0;
 
 
-    let givenProductQuantity = 0;
-    let givenOrderQuantity = 0;
-    let givenPackage = 0;
-    let givenAccountingService = 1;
-    let givenTerminal = 1;
-
-// sum all
-
-    let productSum = 0;
-    let orderSum = 0;
-    let packageSum = 0;
-    let accServiceSum = 35;
-    let terminalSum = 5;
-
-    let totalSum = 0;
-
-    // -------
-
-
-// functions loaded on start
-
-    getProductQuantity();
-    getOrderQuantity();
-    packageSelectorClick();
-    nowSelectPackage();
-    checkAcSrv();
-    checkTerminal();
-    /////
-
-    // getting inputs values
-
-
-    function getProductQuantity() {
-
-        productsQuantity.on('change', function () {
-            let value = Math.floor(productsQuantity.val());
-            productsQuantity.val(value);
-            givenProductQuantity = value;
-            if (givenProductQuantity <= 0) {
-                productsQuantity.val(0);
-                givenProductQuantity = 0;
-            } else if (givenProductQuantity >= 999) {
-                productsQuantity.val(999);
-                givenProductQuantity = 999;
-            }
-            countProductPrice(givenProductQuantity, productPrice);
-            totalSumShow();
-        });
-        productsQuantity.on('keypress', function (k) {
-
-            let keyPressed = k.which;
-            if (keyPressed === 13 && $(this).focusin()) {
-                $(this).blur();
-                orderQuantity.focus();
-            }
-        });
-
-        return givenProductQuantity;
-    }
-
-    function getOrderQuantity() {
-
-        orderQuantity.on('change', function () {
-            let value = Math.floor(orderQuantity.val());
-            orderQuantity.val(value);
-            givenOrderQuantity = value;
-            if (givenOrderQuantity <= 0) {
-                orderQuantity.val(0);
-                givenOrderQuantity = 0;
-            } else if (givenOrderQuantity >= 999) {
-                orderQuantity.val(999);
-                givenOrderQuantity = 999;
-            }
-            countOrderPrice(givenOrderQuantity, orderPrice);
-            totalSumShow();
-        });
-        orderQuantity.on('keypress', function (k) {
-            let keyPressed = k.which;
-            if (keyPressed === 13 && $(this).focusin()) {
-                $(this).blur();
-                if (selectPackageSelectorUp.hasClass("none")) {
-                    selectPackageSelectorDown.focus();
-                } else {
-                    selectPackageSelectorUp.focus();
-                }
-            }
-        });
-        return givenOrderQuantity;
-    }
-
-
-    //check package selector click
-
-    function packageSelectorClick() {
-        if (selectPackageSelectorDown.hasClass("none")){
-            selectPackage.on('click', () => {
-                selectPackageSelectorUp.trigger('click');
-            })
-        }else{
-            selectPackage.on('click', () => {
-                selectPackageSelectorDown.trigger('click');
-            })
+inputProducts.addEventListener('keyup', function(){
+    priceProducts.children[1].innerText = (+inputProducts.value) + ' * $0.5';
+    priceProducts.children[2].innerText = "$" + (inputProducts.value*0.5);
+    priceProducts.classList.remove("hidden");
+    
+    productsSummary = (inputProducts.value*0.5);
+    
+    if(inputProducts.value.length == 0) {
+        priceProducts.classList.add("hidden");
         }
-
-        selectPackageSelectorDown.on('click', function () {
-            $(this).blur();
-            calculatorFormSelect.slideToggle(function () {
-                $(this).toggleClass("none");
-            });
-            selectPackageSelectorUp.toggleClass("none");
-            selectPackageSelectorDown.toggleClass("none");
-        });
-        selectPackageSelectorUp.on('click', function () {
-            $(this).blur();
-            calculatorFormSelect.slideToggle(function () {
-                $(this).toggleClass("none");
-            });
-            selectPackageSelectorUp.toggleClass("none");
-            selectPackageSelectorDown.toggleClass("none");
-        })
-    }
-
-    // check selected package
-
-    function nowSelectPackage() {
-        basic.on('click', function () {
-            givenPackage = 1;
-            selectPackageSelectorUp.toggleClass("none");
-            selectPackageSelectorDown.toggleClass("none");
-            calculatorFormSelect.slideToggle(function () {
-                $(this).toggleClass("none");
-            });
-            selectPackage.val("Podstawowy");
-            countPackagePrice(givenPackage, packagePrice, selectPackage.val());
-            totalSumShow();
-
-        });
-        pro.on('click', function () {
-            givenPackage = 2;
-            selectPackageSelectorUp.toggleClass("none");
-            selectPackageSelectorDown.toggleClass("none");
-            calculatorFormSelect.slideToggle(function () {
-                $(this).toggleClass("none");
-            });
-            selectPackage.val("Profesjonalny");
-            countPackagePrice(givenPackage, packagePrice, selectPackage.val());
-            totalSumShow();
-        });
-        premium.on('click', function () {
-            givenPackage = 3;
-            selectPackageSelectorUp.toggleClass("none");
-            selectPackageSelectorDown.toggleClass("none");
-            calculatorFormSelect.slideToggle(function () {
-                $(this).toggleClass("none");
-            });
-            selectPackage.val("Premium");
-            countPackagePrice(givenPackage, packagePrice, selectPackage.val());
-            totalSumShow();
-        });
-        return givenPackage;
-    }
-
-    // check accounting service and terminal
-
-    function checkAcSrv() {
-        accountingService.on("click", function () {
-            if ($(this).prop("checked")) {
-                givenAccountingService = 1;
-            } else {
-                givenAccountingService = 0;
-            }
-            countAcServCount(givenAccountingService, accountServicePrice);
-            totalSumShow();
-        })
-    }
-
-    function checkTerminal() {
-        terminal.on("click", function () {
-            if ($(this).prop("checked")) {
-                givenTerminal = 1;
-            } else {
-                givenTerminal = 0;
-            }
-            terminalCount(givenTerminal, terminalPrice);
-            totalSumShow();
-        })
-    }
-
-    ///////// count and show it
-
-    function countProductPrice(quantity, price) {
-        let qty = quantity;
-        let pr = price;
-        if (qty > 0) {
-            productSum = qty * pr;
-            $(productsPriceTxt).text(qty + " * " + pr + "$");
-            $(productsSumTxt).text(productSum + "$");
-        } else {
-            productSum = 0;
-            $(productsPriceTxt).empty();
-            $(productsSumTxt).empty();
-        }
-    }
-
-    function countOrderPrice(quantity, price) {
-        let qty = quantity;
-        let pr = price;
-        if (qty > 0) {
-            orderSum = qty * pr;
-            $(ordersPriceTxt).text(qty + " * " + pr + "$");
-            $(ordersSumTxt).text(orderSum + "$");
-        } else {
-            orderSum = 0;
-            $(ordersPriceTxt).empty();
-            $(ordersSumTxt).empty();
-        }
-    }
-
-    function countPackagePrice(pnum, price, pval) {
-        let pNumber = pnum;
-        let pPrice = price;
-        if (pNumber > 0) {
-            packageSum = pNumber * pPrice;
-            $(packageTxt).text(pval);
-            $(packagePriceTxt).text(packageSum + "$");
-        } else {
-            packageSum = 0;
-            $(packageTxt).empty();
-            $(packagePriceTxt).empty();
-        }
-    }
-
-    function countAcServCount(check, price) {
-        let sCheck = check;
-        let sPrice = price;
-        accServiceSum = sCheck * sPrice;
-        $(accountingPriceTxt).text(accServiceSum + "$");
-
-    }
-
-    function terminalCount(check, price) {
-        let tCheck = check;
-        let tPrice = price;
-        terminalSum = tCheck * tPrice;
-        $(terminalPriceTxt).text(terminalSum + "$");
-    }
-
-    function totalSumShow() {
-        totalSum = productSum + orderSum + packageSum + accServiceSum + terminalSum;
-        $(priceSumTxt).text(totalSum + "$");
-    }
-
-
-// const time = setInterval(function() {
-//     console.log(givenProductQuantity, givenOrderQuantity, givenPackage, givenAccountingService, givenTerminal,productSum);
-// }, 500);
-
+    totalResult();
 })
-;
+
+let orderSummary = 0;
+
+inputOrders.addEventListener('keyup', function() {
+    priceOrders.children[1].innerText = (+inputOrders.value) + ' * $0.25';
+    priceOrders.children[2].innerText = '$' + (inputOrders.value * 0.25);
+    priceOrders.classList.remove('hidden');
+
+    orderSummary = (inputOrders.value*0.25);
+
+    if(inputOrders.value.length == 0) {
+        priceOrders.classList.add('hidden');
+    }
+    totalResult();
+})
+
+
+let choose = document.querySelector(".calculator-form__shown");
+let optionsList = document.querySelector(".calculator-form__hidden");
+
+let packageSummary = 0;
+
+choose.addEventListener("click",function(){
+    optionsList.classList.toggle("hidden");
+    if(choose.style.backgroundImage == 'url("./images/items/Arrow_Up.svg")') {
+        choose.style.backgroundImage = 'url("./images/items/Arrow_Down.svg")';
+    }else {
+        choose.style.backgroundImage = 'url("./images/items/Arrow_Up.svg")';
+    }
+});
+
+let chooseBtn = document.getElementById('choose_btn');
+let basicOpt = document.querySelector('.calculator-form__hidden').firstElementChild;
+let professionalOpt = document.querySelector('.calculator-form__hidden').children[1];
+let premiumOpt = document.querySelector('.calculator-form__hidden').children[2];
+let packagePrice = document.querySelector('.calculator-result').children[2];
+
+basicOpt.addEventListener('click', function(){
+    chooseBtn.innerText = 'Podstawowy';
+    packagePrice.children[1].innerText = 'Podstawowy';
+    packagePrice.children[2].innerText = '$0'
+    packagePrice.classList.remove('hidden');
+    packageSummary = 0;
+    totalResult();
+})
+
+professionalOpt.addEventListener('click', function() {
+    chooseBtn.innerText = 'Profesjnalny';
+    packagePrice.children[1].innerText = 'Profesjonalny';
+    packagePrice.children[2].innerText = '$25';
+    packagePrice.classList.remove('hidden');
+    packageSummary = 25;
+    totalResult();
+})
+
+premiumOpt.addEventListener('click', function() {
+    chooseBtn.innerText = 'Premium';
+    packagePrice.children[1].innerText = 'Premium';
+    packagePrice.children[2].innerText = '$65';
+    packagePrice.classList.remove('hidden');
+    packageSummary = 65;
+    totalResult();
+})
+
+let accountCheck = document.querySelector('.calculator-form label:nth-of-type(3)').firstElementChild;
+let terminalCheck = document.querySelector('.calculator-form label:nth-of-type(4)').firstElementChild;
+let accountantPrice = document.querySelector('.calculator-result').children[3];
+let terminalPrice = document.querySelector('.calculator-result').children[4];
+let accountantChecked = false;
+let terminalChecked = false;
+
+let accountantSummary = 35;
+let terminalSummary = 5;
+
+accountCheck.addEventListener('click', function(){
+    accountantPrice.classList.toggle('hidden');
+    if(accountantChecked == false) {
+        accountantChecked = true;
+    }else {
+        accountantChecked = false;
+    }
+    totalResult();
+})
+
+terminalCheck.addEventListener('click', function() {
+    terminalPrice.classList.toggle('hidden');
+    if(terminalChecked == false) {
+        terminalChecked = true;
+    }else {
+        terminalChecked = false;
+    }
+    totalResult();
+})
+
+
+let totalResult = function() {
+    summary = (productsSummary) + (orderSummary) + (packageSummary) + ((accountantSummary * accountantChecked)) + ((terminalSummary * terminalChecked));
+    document.querySelector('#summary-total').innerText = '$' + summary;
+};
