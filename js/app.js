@@ -1,8 +1,8 @@
 
 let inputProducts = document.getElementById('products_number');
 let inputOrders = document.getElementById('monthly_orders');
-let priceProducts = document.querySelector(".calculator-result").firstElementChild;
 let priceOrders= document.querySelector(".calculator-result").children[1];
+let priceProducts = document.querySelector(".calculator-result").firstElementChild;
 
 let productsSummary = 0;
 
@@ -18,7 +18,7 @@ inputProducts.addEventListener('keyup', function(){
         priceProducts.classList.add("hidden");
         }
     totalResult();
-})
+});
 
 let orderSummary = 0;
 
